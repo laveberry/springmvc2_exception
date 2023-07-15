@@ -41,6 +41,10 @@ public class ErrorPageController {
         log.info("ERROR_SERVLET_NAME: {}", request.getAttribute(ERROR_SERVLET_NAME));
         log.info("ERROR_STATUS_CODE: {}", request.getAttribute(ERROR_STATUS_CODE));
 
+        /* 서블릿 고객호출 or 내부호출 구분
+         REQUEST : 고객호출
+         ERROR : 내부 오류 요청
+         */
         log.info("dispatchType={}", request.getDispatcherType());
     }
 
