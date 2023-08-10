@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 //과거에는 web.xml 에서 에러페이지 처리
 //Component 등록
-@Component // 스프링부트 자동에러페이지 연결을 위한 주석처리
+//@Component // 스프링부트 자동에러페이지 연결을 위한 주석처리
 public class WebServerCustomizer implements WebServerFactoryCustomizer<ConfigurableWebServerFactory> {
     @Override
     public void customize(ConfigurableWebServerFactory factory) {
