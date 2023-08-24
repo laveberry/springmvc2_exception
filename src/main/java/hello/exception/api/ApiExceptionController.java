@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -40,6 +41,16 @@ public class ApiExceptionController {
     @GetMapping("/api/response-status-ex2")
     public String responseStatusEx2() {
         throw  new ResponseStatusException(HttpStatus.NOT_FOUND, "error.bad", new IllegalArgumentException());
+    }
+
+    /*
+    파라미터 타입 오류시 서블릿 컨테이너까지 올라가지 않고 DefaultHandlerExceptionResolver 가 500 -> 400 오류로 변환
+    response.sendError(400) 으로 문제 해결.
+    was에서 오류페이지 /error 내부 호출
+     */
+    @GetMapping("/api/default-handler-ex")
+    public String defaultException(@RequestParam Integer data) {
+        return "ok";
     }
 
     @Data
